@@ -2,6 +2,13 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
 
+@mixin form-field {
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: var(--form-field-border-radius);
+  background-color: var(--input-background-color);
+}
+
 a {
   text-decoration: none;
 }
@@ -133,10 +140,7 @@ body {
 
 .search-form-field {
   padding: 16px 48px 15px 19px;
-  background-color: var(--input-background-color);
-  border: none;
-  border-bottom: 1px solid var(--border-color);
-  border-radius: 4px 4px 0px 0px;
+  @include form-field;
 }
 
 .user-items {
@@ -209,59 +213,57 @@ h2 {
   }
 }
 
-
-
 .product {
   &-heading {
-	position: relative;
-  
-	@include media-breakpoint-up(md) {
-	  display: flex;
-	  justify-content: space-between;
-	  align-items: baseline;
-	}
-  
-	&-action-buttons {
-	  display: inline-flex;
-	  gap: 0 20px;
-	  font-size: 20px;
-	  line-height: 20px;
-	}
+    position: relative;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    &-action-buttons {
+      display: inline-flex;
+      gap: 0 20px;
+      font-size: 20px;
+      line-height: 20px;
+    }
   }
 
   &-content {
-	margin-bottom: 32px;
+    margin-bottom: 32px;
 
-	@include media-breakpoint-up(lg) {
-	  display: flex;
-	  align-items: flex-start;
-	  gap: 0 32px;
-	  margin-bottom: 18px;
-	}
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+      gap: 0 32px;
+      margin-bottom: 18px;
+    }
 
-	&-details {
-		padding: 24px;
-		background-color: var(--background-alternative-color);
-	  
-		@include media-breakpoint-up(lg) {
-		  max-width: 488px;
-		  padding-left: 32px;
-		  padding-right: 32px;
-		}
-	  
-		@include media-breakpoint-down(lg) {
-		  padding-right: 16px;
-		  margin-top: 24px;
-		}
-	  
-		p {
-		  margin-bottom: 19px;
-	  
-		  @include media-breakpoint-up(lg) {
-			margin-bottom: 24px;
-		  }
-		}
-	  }
+    &-details {
+      padding: 24px;
+      background-color: var(--background-alternative-color);
+
+      @include media-breakpoint-up(lg) {
+        max-width: 488px;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+
+      @include media-breakpoint-down(lg) {
+        padding-right: 16px;
+        margin-top: 24px;
+      }
+
+      p {
+        margin-bottom: 19px;
+
+        @include media-breakpoint-up(lg) {
+          margin-bottom: 24px;
+        }
+      }
+    }
   }
 }
 
@@ -275,6 +277,7 @@ h2 {
 
 .btn {
   border: 1px solid var(--border-color);
+  user-select: auto;
 
   @include media-breakpoint-down(sm) {
     padding-left: 24px;
@@ -284,32 +287,70 @@ h2 {
   &.btn-more {
     &,
     &:active,
-    &:hover,
-    &:focus {
+    &:hover {
       color: var(--primary-color);
       background-color: var(--background-color);
     }
+
+	&:focus-visible {
+		box-shadow: 0 0 0 4px var(--outline-primary-color);
+	}
+  }
+
+  &.btn-send {
+    &,
+    &:active,
+    &:hover {
+      color: var(--background-color);
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
+    }
+
+	&:focus-visible {
+		box-shadow: 0 0 0 4px var(--outline-primary-color);
+	}
+  }
+
+  &.btn-cancel {
+    &,
+    &:active,
+    &:hover {
+      color: var(--primary-color);
+      border-color: var(--background-color);
+      background-color: var(--background-color);
+    }
+
+	&:focus-visible {
+		box-shadow: 0 0 0 4px var(--outline-primary-color);
+	}
   }
 
   &.btn-add {
     &,
     &:active,
-    &:hover,
-    &:focus {
+    &:hover {
       color: var(--background-color);
       border-color: var(--alternative-color);
       background-color: var(--alternative-color);
     }
+
+	&:focus-visible {
+		box-shadow: 0 0 0 4px var(--outline-alternative-color);
+	}
   }
 
   &.btn-contacts {
     &,
     &:active,
-    &:hover,
-    &:focus {
+    &:hover {
       color: var(--alternative-color);
+	  border-color: var(--border-color);
       background-color: var(--background-color);
     }
+
+	&:focus-visible {
+		box-shadow: 0 0 0 4px var(--outline-alternative-color);
+	}
   }
 }
 
@@ -335,7 +376,7 @@ h2 {
   margin-bottom: 22px;
   border: none;
   border-bottom: 1px solid var(--border-color);
-  border-radius: 4px 4px 0px 0px;
+  border-radius: var(--form-field-border-radius);
 }
 
 .select-label {
@@ -385,6 +426,10 @@ h2 {
   height: 48px;
   border-radius: 50%;
   background: var(--background-alternative-color);
+
+  &:focus-visible {
+	box-shadow: 0 0 0 1px var(--select-label-color);
+}
 
   @include media-breakpoint-up(lg) {
     width: 56px;
@@ -470,38 +515,106 @@ h2 {
 }
 
 .table-block {
-	padding: 39px 0 81px;
-	background-color: var(--background-alternative-color);
+  padding: 39px 0 81px;
+  background-color: var(--background-alternative-color);
 
-	@include media-breakpoint-down(md) {
-		padding-top: 32px;
-	}
+  @include media-breakpoint-down(md) {
+    padding-top: 32px;
+  }
 }
 
 .table-wrapper {
-	overflow-x: auto;
+  overflow-x: auto;
 }
 
 .table {
-	margin-bottom: 0;
+  margin-bottom: 0;
 
-	@include media-breakpoint-down(lg) {
-		white-space: nowrap;
-	}
+  @include media-breakpoint-down(lg) {
+    white-space: nowrap;
+  }
 
-	@include media-breakpoint-down(sm) {
-		margin-left: 24px;
-		margin-right: 24px;
-	}
+  @include media-breakpoint-down(sm) {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 
-	th {
-		padding: 0 20px 7px;
-		font-size: 14px;
-		line-height: 24px;
-		color: var(--primary-color);
-	}
+  th {
+    padding: 0 20px 7px;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--primary-color);
+  }
 
-	td {
-		padding: 9px 20px 7px;
-	}
+  td {
+    padding: 9px 20px 7px;
+  }
+}
+
+.modal-dialog {
+  max-width: 480px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.modal-content {
+  position: relative;
+  padding: 20px 32px 24px;
+
+  @include media-breakpoint-down(sm) {
+	padding-left: 24px;
+	padding-right: 24px;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .input,
+  .textarea {
+    padding: 19px 16px;
+    font-size: 14px;
+    line-height: 18px;
+    @include form-field;
+  }
+
+  .btn-send {
+    padding: 11px 19px 13px 20px;
+  }
+
+  .btn-cancel {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .modal-title {
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
+}
+
+.contact-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.close-button {
+  width: 22px;
+  height: 21px;
+  position: absolute;
+  top: 16px;
+  right: 28px;
+  padding: 4px;
+  line-height: 0;
+  border: none;
+  background-color: transparent;
+
+  @include media-breakpoint-down(sm) {
+	right: 20px;
+  }
 }

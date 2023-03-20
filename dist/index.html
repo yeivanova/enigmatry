@@ -92,7 +92,7 @@
           </div>
           <div class="user-items">
             <a href="#">
-              <span class="d-none">Profile</span>
+              <span class="visually-hidden">Profile</span>
               <svg
                 width="18"
                 height="21"
@@ -105,7 +105,7 @@
               </svg>
             </a>
             <a href="#">
-              <span class="d-none">Wishlist</span>
+              <span class="visually-hidden">Wishlist</span>
               <svg
                 width="22"
                 height="19"
@@ -118,7 +118,7 @@
               </svg>
             </a>
             <a href="#" class="user-items-card-link">
-              <span class="d-none">My cart</span>
+              <span class="visually-hidden">My cart</span>
               <svg
                 aria-hidden="true"
                 width="23"
@@ -150,7 +150,7 @@
             <h1>Product name lorem ipsum</h1>
             <div class="product-heading-action-buttons">
               <a href="#">
-                <span class="d-none">To the previous product</span>
+                <span class="visually-hidden">To the previous product</span>
                 <svg
                   width="18"
                   height="17"
@@ -163,7 +163,7 @@
                 </svg>
               </a>
               <a href="#">
-                <span class="d-none">To the next product</span>
+                <span class="visually-hidden">To the next product</span>
                 <svg
                   width="18"
                   height="17"
@@ -176,7 +176,7 @@
                 </svg>
               </a>
               <a href="#">
-                <span class="d-none">Add to wishlist</span>
+                <span class="visually-hidden">Add to wishlist</span>
                 <svg
                   width="22"
                   height="19"
@@ -189,7 +189,7 @@
                 </svg>
               </a>
               <a href="#">
-                <span class="d-none">Share this</span>
+                <span class="visually-hidden">Share this</span>
                 <svg
                   width="18"
                   height="19"
@@ -309,8 +309,10 @@
                   </label>
                 </div>
                 <div class="order-controls">
-                  <button type="submit" class="btn btn-add">Add to cart</button>
-                  <button type="button" class="btn btn-contacts">
+                  <button type="submit" class="btn btn-add">
+                    Add to cart
+                  </button>
+                  <button type="button" class="btn btn-contacts" data-bs-toggle="modal" data-bs-target="#contactUs">
                     Contact us
                   </button>
                 </div>
@@ -356,7 +358,9 @@
                   perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium.
                 </p>
-                <button type="button" class="btn btn-more">More info</button>
+                <button type="button" class="btn btn-more">
+                  More info
+                </button>
               </div>
               <div class="product-description-img-col">
                 <img
@@ -378,7 +382,9 @@
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                 nulla pariatur.
               </p>
-              <button type="button" class="btn btn-more">More info</button>
+              <button type="button" class="btn btn-more">
+                More info
+              </button>
             </section>
           </div>
           <div class="tab-pane" id="reviews">
@@ -467,6 +473,68 @@
           </div>
         </div>
       </section>
+      <div
+        class="modal fade"
+        id="contactUs"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="contactUsLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <h2 class="modal-title" id="contactUsLabel">Contact us</h2>
+            <button
+              type="button"
+              class="close-button"
+              data-bs-dismiss="modal"
+              aria-label="Close">
+              <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
+                <path
+                  d="M13.1875 11.1484C13.5391 11.5391 13.5391 12.125 13.1875 12.4766C12.7969 12.8672 12.2109 12.8672 11.8594 12.4766L7.25 7.82812L2.60156 12.4766C2.21094 12.8672 1.625 12.8672 1.27344 12.4766C0.882812 12.125 0.882812 11.5391 1.27344 11.1484L5.92188 6.5L1.27344 1.85156C0.882812 1.46094 0.882812 0.875 1.27344 0.523438C1.625 0.132812 2.21094 0.132812 2.5625 0.523438L7.25 5.21094L11.8984 0.5625C12.25 0.171875 12.8359 0.171875 13.1875 0.5625C13.5781 0.914062 13.5781 1.5 13.1875 1.89062L8.53906 6.5L13.1875 11.1484Z"
+                  fill="#1E1E1E" />
+              </svg>
+            </button>
+            <p>We’ll get back to you as soon as possible.</p>
+            <form id="contactUs" class="form" action="/" method="POST">
+              <div class="mb-3">
+                <label for="email" class="form-label visually-hidden">
+                  Your e-mail
+                </label>
+                <input
+                  type="email"
+                  class="form-control input"
+                  id="email"
+                  placeholder="Your e-mail"
+                  aria-describedby="email" />
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label visually-hidden">
+                  Your message
+                </label>
+                <textarea
+                  type="text"
+                  class="form-control textarea"
+                  id="message"
+                  placeholder="Your message"
+                  rows="5"
+                  aria-describedby="message"></textarea>
+              </div>
+              <div class="contact-controls">
+                <button
+                  type="reset"
+                  class="btn btn-cancel mt-2"
+                  data-bs-dismiss="modal">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-send mt-2">
+                  Send message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
     <script src="./main.js"></script>
   </body>
