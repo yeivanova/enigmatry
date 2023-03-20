@@ -209,55 +209,59 @@ h2 {
   }
 }
 
-.heading {
-  position: relative;
 
-  @include media-breakpoint-up(md) {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-
-  &-action-buttons {
-    display: inline-flex;
-    gap: 0 20px;
-    font-size: 20px;
-    line-height: 20px;
-  }
-}
 
 .product {
-  margin-bottom: 32px;
-
-  @include media-breakpoint-up(lg) {
-    display: flex;
-    align-items: flex-start;
-    gap: 0 32px;
-    margin-bottom: 18px;
-  }
-}
-
-.product-details {
-  padding: 24px;
-  background-color: var(--background-alternative-color);
-
-  @include media-breakpoint-up(lg) {
-    max-width: 488px;
-    padding-left: 32px;
-    padding-right: 32px;
+  &-heading {
+	position: relative;
+  
+	@include media-breakpoint-up(md) {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: baseline;
+	}
+  
+	&-action-buttons {
+	  display: inline-flex;
+	  gap: 0 20px;
+	  font-size: 20px;
+	  line-height: 20px;
+	}
   }
 
-  @include media-breakpoint-down(lg) {
-    padding-right: 16px;
-    margin-top: 24px;
-  }
+  &-content {
+	margin-bottom: 32px;
 
-  p {
-    margin-bottom: 19px;
+	@include media-breakpoint-up(lg) {
+	  display: flex;
+	  align-items: flex-start;
+	  gap: 0 32px;
+	  margin-bottom: 18px;
+	}
 
-    @include media-breakpoint-up(lg) {
-      margin-bottom: 24px;
-    }
+	&-details {
+		padding: 24px;
+		background-color: var(--background-alternative-color);
+	  
+		@include media-breakpoint-up(lg) {
+		  max-width: 488px;
+		  padding-left: 32px;
+		  padding-right: 32px;
+		}
+	  
+		@include media-breakpoint-down(lg) {
+		  padding-right: 16px;
+		  margin-top: 24px;
+		}
+	  
+		p {
+		  margin-bottom: 19px;
+	  
+		  @include media-breakpoint-up(lg) {
+			margin-bottom: 24px;
+		  }
+		}
+	  }
   }
 }
 
@@ -463,4 +467,41 @@ h2 {
   @include media-breakpoint-down(lg) {
     flex-direction: column;
   }
+}
+
+.table-block {
+	padding: 39px 0 81px;
+	background-color: var(--background-alternative-color);
+
+	@include media-breakpoint-down(md) {
+		padding-top: 32px;
+	}
+}
+
+.table-wrapper {
+	overflow-x: auto;
+}
+
+.table {
+	margin-bottom: 0;
+
+	@include media-breakpoint-down(lg) {
+		white-space: nowrap;
+	}
+
+	@include media-breakpoint-down(sm) {
+		margin-left: 24px;
+		margin-right: 24px;
+	}
+
+	th {
+		padding: 0 20px 7px;
+		font-size: 14px;
+		line-height: 24px;
+		color: var(--primary-color);
+	}
+
+	td {
+		padding: 9px 20px 7px;
+	}
 }
